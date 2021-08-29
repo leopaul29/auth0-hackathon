@@ -3,18 +3,35 @@ import { Link } from 'preact-router/match';
 import LoginButton from '../LoginButton';
 import LogoutButton from '../logoutButton';
 import style from './style.css';
+import { useAuth0 } from "@auth0/auth0-react";
 
-const Header = () => (
-	<header class={style.header}>
-		<h1>Preact App</h1>
-		<nav>
-			<Link activeClassName={style.active} href="/">Home</Link>
-			<Link activeClassName={style.active} href="/profile">Me</Link>
-			<Link activeClassName={style.active} href="/profile/john">John</Link>
-			<Link><LoginButton /></Link>
-			<Link><LogoutButton /></Link>
-		</nav>
-	</header>
-);
+const Header = () => {
+	const { user, isAuthenticated, isLoading } = useAuth0();
+	
+	return (
+		<header class={style.header}>
+			<h1>Quiz App</h1>
+			<nav>
+				{isLoading && (
+					<div>Loading ...</div>
+				)}
+				
+				{!isAuthenticated && (
+				<div>
+					<Link activeClassName={style.active} href="/">Home2</Link>
+					<Link><LoginButton /></Link>
+				</div>
+				)}
+				{isAuthenticated && (
+				<div>
+					<Link activeClassName={style.active} href="/">Home</Link>
+					<Link activeClassName={style.active} href={"/profile/"+user.nickname}>{user.nickname}</Link>	
+					<Link><LogoutButton /></Link>
+				</div>
+				)}
+			</nav>
+		</header>
+	);
+}
 
 export default Header;
