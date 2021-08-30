@@ -10,7 +10,7 @@ const Header = () => {
 	
 	return (
 		<header class={style.header}>
-			<h1>Quiz App</h1>
+			<Link activeClassName={style.active} href="/"><h1>Quiz App</h1></Link>
 			<nav>
 				{isLoading && (
 					<div>Loading ...</div>
@@ -18,13 +18,11 @@ const Header = () => {
 				
 				{!isAuthenticated && (
 				<div>
-					<Link activeClassName={style.active} href="/">Home2</Link>
 					<Link><LoginButton /></Link>
 				</div>
 				)}
 				{isAuthenticated && (
 				<div>
-					<Link activeClassName={style.active} href="/">Home</Link>
 					<Link activeClassName={style.active} href={"/profile/"+user.nickname}>{user.nickname}</Link>	
 					<Link><LogoutButton /></Link>
 				</div>
