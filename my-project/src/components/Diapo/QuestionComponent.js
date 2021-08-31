@@ -6,7 +6,6 @@ import Funfact from "./Funfact";
 class QuestionComponent extends React.Component {
   constructor(props) {
     super(props);
-    console.log("props:" + props);
     this.state = {
       id: this.props.id,
       question: this.props.question,
@@ -19,6 +18,7 @@ class QuestionComponent extends React.Component {
 
   handleCallback = () => {
     this.setState({ showFF: true });
+    this.props.addPoint()
   };
 
   render() {

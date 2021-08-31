@@ -13,12 +13,12 @@ class Choice extends React.Component {
   }
 
   handleChange = (e) => {
-    this.props.parentCallback()
+    this.state.valid ? this.props.parentCallback() : "";
     this.setState({
       checked: e.target.value,
       style: {
         color: this.state.valid ? "green" : "red",
-        "font-size":  this.state.valid ? "24px" : "12px",
+        "font-size": this.state.valid ? "24px" : "12px",
       },
     });
   };
