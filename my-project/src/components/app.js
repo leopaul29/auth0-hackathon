@@ -11,11 +11,16 @@ import React from "react";
 
 import { Auth0Provider } from "@auth0/auth0-react";
 
+const origin = () => {
+  if (typeof window !== "undefined") return window.location.origin
+  else ""
+}
+
 const App = () => (
   <Auth0Provider
     domain="yrladd.eu.auth0.com"
     clientId="Nnqj6YR5YjiBDSO6LGlzla1lwMsFs67Y"
-    redirectUri={window.location.origin}
+    redirectUri={origin}
   >
     <div id="app">
       <Header />
