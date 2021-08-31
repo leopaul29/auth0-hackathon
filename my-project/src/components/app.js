@@ -8,7 +8,7 @@ import Home from "../routes/home";
 import Profile from "../routes/profile";
 
 import React from "react";
-import ReactDOM from "react-dom";
+
 import { Auth0Provider } from "@auth0/auth0-react";
 
 const App = () => (
